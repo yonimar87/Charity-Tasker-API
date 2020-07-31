@@ -1,0 +1,59 @@
+const mongoose = require('mongoose');
+const { text } = require('body-parser');
+
+const { Schema } = mongoose;
+
+const ChallengeSchema = new Schema(
+    { 
+        catagory: {
+            type: String,
+            required: 'Must have a catagory'
+        },
+
+        description: {
+            type: String
+        },
+
+        shortDescription: {
+            type: String,
+            required: 'Must have an at least a short Description'
+
+        },
+
+        goal: {
+            type: Number,
+            required: 'Needs a goal'
+        },
+
+        video_url: {
+            type: String
+        },
+
+        creater_id: {
+            type: String,
+            required: "can't be created without an ID"
+        },
+
+        fullfilledBy_id: {
+            type: String
+        }
+
+    },    
+     { collection: 'Challenges' }
+
+)
+
+
+
+//type of challenge
+//long - description text
+//short - descrition. string
+//video - url
+//goal - integer
+//creater_id
+//fulfilledBy_id
+
+//currency - but maybe not needed
+
+
+module.exports = mongoose.model('Challenges', ChallengeSchema);
