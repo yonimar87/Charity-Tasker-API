@@ -1,26 +1,24 @@
 const donationsBuilder = require('../controllers/donations')
 const challengeBuilder = require('../controllers/challenges')
 const charitiesBuilder = require('../controllers/charities')
-const usersBuilder = require('../controllers/users')
+const userBuilder = require('../controllers/users')
 
 
 module.exports = (app) => {
 
-    app
+    app.get('/challenges', challengeBuilder.create_a_challenge),
         // .route('/')
-        .get('/', challengeBuilder.create_a_challenge
-        
         // (req,res) => {
         //     challengeBuilder.create_a_challenge()
         //     res.send('main page')
         // }
         
-        ),
-    app
+    app.get('/users', userBuilder.create_a_user),
         // .route('/profile/:id')
-        .get('/profile/:id',(req,res) => {
-            res.send('Profile to go here')
-        }),
+        // .get('/profile/:id',(req,res) => {
+        //     res.send('Profile to go here')
+        // }),
+        
     app
         // .route('/challenge/:id')
         .get('/challenge/:id',(req,res) => {
