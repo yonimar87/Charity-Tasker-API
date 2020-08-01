@@ -43,17 +43,4 @@ const ChallengeSchema = new Schema(
 
 )
 
-
-
-//type of challenge
-//long - description text
-//short - descrition. string
-//video - url
-//goal - integer
-//creater_id
-//fulfilledBy_id
-
-//currency - but maybe not needed
-
-
 module.exports = mongoose.model('Challenges', ChallengeSchema);

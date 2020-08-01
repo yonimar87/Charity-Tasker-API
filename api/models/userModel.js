@@ -27,6 +27,10 @@ const UserSchema = new Schema(
         image_url: {
             type: String
         },
+        date: {
+            type: Date,
+            default: Date.now
+        }
 
     },
     { collection: 'Users' }

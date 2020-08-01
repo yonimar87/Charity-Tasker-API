@@ -28,6 +28,7 @@ exports.create_a_challenge = (req, res) => {
   exports.read_a_challenge = (req, res) => {
     Challenge.findById(req.params.challengeId, (err, challenge) => {
       if (err) res.send(err);
+      
       res.json(challenge);
     })
   }
