@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 global.Challenge = require('./api/models/challengeModel');
@@ -20,7 +20,7 @@ mongoose.connect(
 const PORT = process.env.PORT || 1337; // Get ready for deployment.
 const app = express();
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // Makes POST requests work
 app.use(bodyParser.json());
 

@@ -14,6 +14,11 @@ const ChallengeSchema = new Schema(
             type: String
         },
 
+        name: {
+            type: String,
+            required: "Must have a challenge name"
+        },
+
         shortDescription: {
             type: String,
             required: 'Must have an at least a short Description'
