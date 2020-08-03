@@ -9,9 +9,8 @@ const validateLoginInput = require("../../../validation/login");
 // Load User model
 const User = require("../../models/userModel");
 
-
-router.get('/ivan', (req, res) => {
-    return res.json({'a': true})
+router.get("/ping", (req,res) => {
+  return res.json({a: 4})
 })
 
 // @route POST api/users/register
@@ -29,10 +28,11 @@ router.post("/register", (req, res) => {
         return res.status(400).json({ email: "Email already exists" });
       } else {
         const newUser = new User({
-          full_name: req.body.full_name,
           username: req.body.username,
+          name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          password2: req.body.password2
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -71,7 +71,9 @@ router.post("/login", (req, res) => {
           // Create JWT Payload
           const payload = {
             id: user.id,
-            name: user.name
+            name: user.name,
+            email: user.email,
+            username: user.username
           };
   // Sign token
           jwt.sign(

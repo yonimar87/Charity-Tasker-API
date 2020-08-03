@@ -4,10 +4,10 @@ const { text } = require('body-parser');
 const { Schema } = mongoose;
 
 const ChallengeSchema = new Schema(
-    { 
-        catagory: {
+    {
+        category: {
             type: String,
-            required: 'Must have a catagory'
+            required: 'Must have a category'
         },
 
         description: {
@@ -38,7 +38,7 @@ const ChallengeSchema = new Schema(
             type: String
         }
 
-    },    
+    },
      { collection: 'Challenges' }
 
 )

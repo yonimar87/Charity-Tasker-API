@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 const Challenge = mongoose.model('Challenges');
 
 exports.create_a_challenge = (req, res) => {
-    const newChallenge = new Challenge({
-        shortDescription: "DragonBall Z",
-        catagory: "Movies",
-        goal: 100,
-        creater_id: "123123",
-        fulfilledBy_id: "456456"
-    }); 
+    const newChallenge = new Challenge(
+      req.body
+    );
     newChallenge.save((err, challenge) => {
         console.log(challenge)
         console.log(err)
@@ -19,7 +15,11 @@ exports.create_a_challenge = (req, res) => {
   };
 
   exports.list_all_challenges = (req, res) => {
-    Challenge.find({}, (err, challenges) => {
+    let filter = {}
+    if (req.query.category) {
+      filter.category = req.query.category
+    }
+    Challenge.find(filter, (err, challenges) => {
       if (err) res.send(err);
       res.json(challenges);
     });
@@ -28,11 +28,11 @@ exports.create_a_challenge = (req, res) => {
   exports.read_a_challenge = (req, res) => {
     Challenge.findById(req.params.challengeId, (err, challenge) => {
       if (err) res.send(err);
-      
+
       res.json(challenge);
     })
   }
-  
+
   exports.update_a_challenge = (req, res) => {
     Challenge.findOneAndUpdate(
       {_id: req.params.challengeId},
