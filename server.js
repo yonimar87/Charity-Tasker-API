@@ -10,7 +10,7 @@ const { mongoURI } = require('./config/keys');
 const passport = require('passport');
 const users = require('./api/routes/api/users');
 const challenges = require('./api/routes/api/challenges')
-require path = require('path')
+const path = require('path')
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
