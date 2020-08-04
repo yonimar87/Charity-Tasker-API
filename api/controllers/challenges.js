@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Challenge = mongoose.model('Challenges');
+const jwt_decode = require('jwt-decode')
 
 exports.create_a_challenge = (req, res) => {
+    // req.body.creator_id = jwt_decode(req.body.token).id;
+    console.log(req.body.creator_id);
     const newChallenge = new Challenge(
       req.body
     );
@@ -14,11 +17,41 @@ exports.create_a_challenge = (req, res) => {
     });
   };
 
+  exports.assign_a_challenge = (req, res) => {
+    const challenge_id = req.body.challenge_id
+    const user_id = req.body.user_id
+    console.log(user_id);
+
+    // const filter = {
+    //   _id: challenge_id
+    // }
+    const newData = {
+      fulfilledBy_id: user_id
+    }
+
+    Challenge.findByIdAndUpdate(challenge_id, newData, function(err, doc) {
+          if (err) return res.send(500, {error: err});
+          return res.send('Succesfully saved.' );
+      });
+  //   Challenge.findOneAndUpdate(filter, newData, {upsert: true}, function(err, doc) {
+  //     if (err) return res.send(500, {error: err});
+  //     return res.send('Succesfully saved.');
+  // });
+  }
+
   exports.list_all_challenges = (req, res) => {
     let filter = {}
     if (req.query.category) {
       filter.category = req.query.category
     }
+    if (req.query.creator_id) {
+      filter.creator_id = req.query.creator_id
+    }
+    if (req.query.fulfilledBy_id) {
+      filter.fulfilledBy_id = req.query.fulfilledBy_id
+    }
+    console.log(req.query);
+    console.log(filter);
     Challenge.find(filter, (err, challenges) => {
       if (err) res.send(err);
       res.json(challenges);

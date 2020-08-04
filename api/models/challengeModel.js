@@ -36,9 +36,10 @@ const ChallengeSchema = new Schema(
 
         creator_id: {
             type: String,
+            required: "HAS TO HAPPEN"
         },
 
-        fullfilledBy_id: {
+        fulfilledBy_id: {
             type: String
         }
 
