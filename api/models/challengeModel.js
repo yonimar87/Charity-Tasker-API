@@ -34,9 +34,8 @@ const ChallengeSchema = new Schema(
             type: String
         },
 
-        creater_id: {
+        creator_id: {
             type: String,
-            required: "can't be created without an ID"
         },
 
         fullfilledBy_id: {

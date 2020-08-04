@@ -12,7 +12,9 @@ api/users/:id/challenges/:id (will contain the challenge and comments that the u
 challenges:
 <!-- api/challenges/:id /// shows the challenge -->
 api/challenges
+api/challenges?
 api/challenges/:id/donations
+
 
 charity:
 api/charities/:id
