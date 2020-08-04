@@ -10,7 +10,6 @@ const { mongoURI } = require('./config/keys');
 const passport = require('passport');
 const users = require('./api/routes/api/users');
 const challenges = require('./api/routes/api/challenges')
-const path = require('path')
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
@@ -18,8 +17,9 @@ mongoose.connect(
     mongoURI,
   { useNewUrlParser: true }
 );
-
+const PORT = process.env.PORT || 1337; // Get ready for deployment.
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // Makes POST requests work
 app.use(bodyParser.json());
@@ -35,15 +35,6 @@ app.use("/api/users", users);
 app.use("/api/challenges", challenges);
 // app.use("/api/charities", charities);
 // app.use("/api/donations", donations);
-
-if(process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'))
-  app.get('*'), (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  }
-}
-
-const PORT = process.env.PORT || 1337; // Get ready for deployment.
 
 // 404
 app.use((req, res) => {
