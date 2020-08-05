@@ -21,10 +21,6 @@ exports.create_a_challenge = (req, res) => {
     const challenge_id = req.body.challenge_id
     const user_id = req.body.user_id
     console.log(user_id);
-
-    // const filter = {
-    //   _id: challenge_id
-    // }
     const newData = {
       fulfilledBy_id: user_id
     }

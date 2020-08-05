@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const challengeBuilder = require("../../controllers/challenges");
 const Challenge = require("../../models/challengeModel");
+const { Router } = require("express");
 
 router.get("/create", challengeBuilder.create_a_challenge),
   router.get("/:id", (req, res) => {
@@ -16,10 +17,14 @@ router.get("/create", challengeBuilder.create_a_challenge),
   });
 
 router
+  .route("/:challengeId")
+  .patch(challengeBuilder.update_a_challenge)
+
+router
   .route("/")
   .get(challengeBuilder.list_all_challenges)
   .post(challengeBuilder.create_a_challenge)
   .put(challengeBuilder.assign_a_challenge)
-  .patch(challengeBuilder.update_a_challenge);
+
 
 module.exports = router;

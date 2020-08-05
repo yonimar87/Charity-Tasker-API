@@ -31,6 +31,8 @@ const ChallengeSchema = new Schema(
 
     likes: {
       type: Number,
+      required: "Choose a numebr",
+      default: 0
     },
 
     creator_id: {
@@ -40,6 +42,11 @@ const ChallengeSchema = new Schema(
 
     fulfilledBy_id: {
       type: String,
+    },
+
+    status: {
+      type: String,
+      default: "Incomplete"
     },
   },
   { collection: "Challenges" }
