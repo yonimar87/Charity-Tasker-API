@@ -16,15 +16,12 @@ router.get("/create", challengeBuilder.create_a_challenge),
     });
   });
 
-router
-  .route("/:challengeId")
-  .patch(challengeBuilder.update_a_challenge)
+router.route("/:challengeId").patch(challengeBuilder.update_a_challenge);
 
 router
   .route("/")
   .get(challengeBuilder.list_all_challenges)
   .post(challengeBuilder.create_a_challenge)
-  .put(challengeBuilder.assign_a_challenge)
-
+  .put(challengeBuilder.assign_a_challenge);
 
 module.exports = router;
