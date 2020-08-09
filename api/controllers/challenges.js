@@ -51,8 +51,11 @@ exports.list_all_challenges = (req, res) => {
       res.json(challenges);
     });
   } catch (error) {
+    console.log("This is the error.")
     console.log(error)
-  } 
+    res.json({msg: "Error"});
+  }
+  console.log("No error lol.")
 };
 
 exports.read_a_challenge = (req, res) => {
