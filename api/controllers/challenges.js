@@ -33,22 +33,26 @@ exports.assign_a_challenge = (req, res) => {
 };
 
 exports.list_all_challenges = (req, res) => {
-  let filter = {};
-  if (req.query.category) {
-    filter.category = req.query.category;
-  }
-  if (req.query.creator_id) {
-    filter.creator_id = req.query.creator_id;
-  }
-  if (req.query.fulfilledBy_id) {
-    filter.fulfilledBy_id = req.query.fulfilledBy_id;
-  }
-  console.log(req.query);
-  console.log(filter);
-  Challenge.find(filter, (err, challenges) => {
-    if (err) res.send(err);
-    res.json(challenges);
-  });
+  try {
+    let filter = {};
+    if (req.query.category) {
+      filter.category = req.query.category;
+    }
+    if (req.query.creator_id) {
+      filter.creator_id = req.query.creator_id;
+    }
+    if (req.query.fulfilledBy_id) {
+      filter.fulfilledBy_id = req.query.fulfilledBy_id;
+    }
+    console.log(req.query);
+    console.log(filter);
+    Challenge.find(filter, (err, challenges) => {
+      if (err) res.send(err);
+      res.json(challenges);
+    });
+  } catch (error) {
+    console.log(error)
+  } 
 };
 
 exports.read_a_challenge = (req, res) => {
