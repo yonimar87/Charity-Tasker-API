@@ -44,6 +44,10 @@ app.post("/api/upload", async (req, res) => {
     res.status(500).json({ err: "somehting is wrong" });
   }
 });
+
+app.use("/ping", (req,res) => {
+  res.json({msg: "OKAY"});
+}
 // app.use("/api/charities", charities);
 // app.use("/api/donations", donations);
 
