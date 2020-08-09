@@ -56,8 +56,8 @@ exports.list_all_challenges = (req, res) => {
     console.log(error)
     res.json({msg: "Error"});
   }
-  res.json({msg: "No error."})
-  console.log("No error lol.")
+  // res.json({msg: "No error."})
+  // console.log("No error lol.")
 };
 
 exports.read_a_challenge = (req, res) => {
