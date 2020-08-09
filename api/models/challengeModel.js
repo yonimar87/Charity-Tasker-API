@@ -21,7 +21,6 @@ const ChallengeSchema = new Schema(
 
     shortDescription: {
       type: String,
-      required: "Must have an at least a short Description",
     },
 
     goal: {
