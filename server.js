@@ -47,7 +47,7 @@ app.post("/api/upload", async (req, res) => {
 
 app.use("/ping", (req,res) => {
   res.json({msg: "OKAY"});
-}
+})
 // app.use("/api/charities", charities);
 // app.use("/api/donations", donations);
 
