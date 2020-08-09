@@ -33,6 +33,7 @@ exports.assign_a_challenge = (req, res) => {
 };
 
 exports.list_all_challenges = (req, res) => {
+  console.log(process.env)
   try {
     let filter = {};
     if (req.query.category) {
@@ -55,6 +56,7 @@ exports.list_all_challenges = (req, res) => {
     console.log(error)
     res.json({msg: "Error"});
   }
+  res.json({msg: "No error."})
   console.log("No error lol.")
 };
 
