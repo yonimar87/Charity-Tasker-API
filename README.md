@@ -4,26 +4,6 @@ This project was initially created with the focus of providing more donations to
 
 It was created using MERN - MongoDB, Express, React.js and Node.js.
 
-
-## Prerequisites
-
-The following dependencies are installed for the back-end:
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "cloudinary": "^1.22.0",
-    "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^2.2.0",
-    "mongoose": "^5.9.26",
-    "node": "^14.7.0",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "validator": "^13.1.1"
-
 ## Currently waiting on Deployment:
 
 This should be completed using Heroku for the front end, and Netify for the back-end.
